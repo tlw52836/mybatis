@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tlw.dao.StudentDao">
+    <!--namespace与id可以自行定义，但是建议这样写-->
+    <select id="selectById" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where id = #{id}
+    </select>
+
+    <select id="selectByNameOrEmail" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where name = #{myName} or email = #{myEmail}
+    </select>
+
+    <select id="selectByObject" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where name = #{name} or age = #{age}
+    </select>
+
+    <select id="selectByMap" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where name = #{myName} or age = #{myAge}
+    </select>
+
+</mapper>

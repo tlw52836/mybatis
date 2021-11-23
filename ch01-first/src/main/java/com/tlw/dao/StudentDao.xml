@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tlw.dao.StudentDao">
+    <!--namespace与id可以自行定义，但是建议这样写-->
+    <select id="selectStudentById" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where id = #{id}
+    </select>
+
+    <select id="insertStudent">
+        insert into student values(#{id}, #{name}, #{email}, #{age})
+    </select>
+</mapper>
