@@ -56,4 +56,30 @@ public class MyTest {
 
         System.out.println("Map:" + map);
     }
+
+    @Test
+    public void testLikeOne() {
+        //1.获取SqlSession
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+
+        //2.获取dao的代理
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> stus = studentDao.likeOne("%李%");
+
+        stus.forEach(stu-> System.out.println(stu));
+    }
+
+    @Test
+    public void testLikeTwo() {
+        //1.获取SqlSession
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+
+        //2.获取dao的代理
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> stus = studentDao.likeTwo("李");
+
+        stus.forEach(stu-> System.out.println(stu));
+    }
 }

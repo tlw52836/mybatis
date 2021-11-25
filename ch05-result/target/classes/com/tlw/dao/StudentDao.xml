@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="selectById" resultMap="peopleMap">
-        select id, name, email, age from student where id = #{id}
+        select id, name, email, age from student where id = #{stuId}
     </select>
 
     <select id="countStudent" resultType="java.lang.Long">
@@ -18,7 +18,15 @@
     </select>
 
     <select id="selectMap" resultType="java.util.Map">
-        select id, name, email, age from student where id = #{id}
+        select id, name, email, age from student where id = #{stuId}
+    </select>
+
+    <select id="likeOne" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where name like #{stuName}
+    </select>
+
+    <select id="likeTwo" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student where name like "%" #{stuName} "%"
     </select>
 
 

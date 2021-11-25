@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/ch02-proxy-dao/pom.xml" />
         <option value="$PROJECT_DIR$/ch04-parameter/pom.xml" />
         <option value="$PROJECT_DIR$/ch05-result/pom.xml" />
+        <option value="$PROJECT_DIR$/ch06-dynamic-sql/pom.xml" />
       </list>
     </option>
   </component>

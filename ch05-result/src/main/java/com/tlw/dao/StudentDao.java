@@ -14,7 +14,7 @@ public interface StudentDao {
      * @param id
      * @return
      */
-    People selectById(Integer id);
+    People selectById(@Param("stuId") Integer id);
 
     /**
      * 返回一个简单参数
@@ -28,7 +28,20 @@ public interface StudentDao {
      * @param id
      * @return
      */
-    Map selectMap(Integer id);
+    Map selectMap(@Param("stuId") Integer id);
 
+    /**
+     * like的第一种方式
+     * @param name
+     * @return
+     */
+    List<Student> likeOne(@Param("stuName") String name);
+
+    /**
+     * like的第二种方式
+     * @param name
+     * @return
+     */
+    List<Student> likeTwo(@Param("stuName") String name);
 
 }
