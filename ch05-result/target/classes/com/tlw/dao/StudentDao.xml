@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tlw.dao.StudentDao">
+    <!--使用resultMap定义列与属性名的关系-->
+    <resultMap id="peopleMap" type="com.tlw.domain.People">
+        <id column="id" property="cid"/>
+        <result column="name" property="cname"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="peopleMap">
+        select id, name, email, age from student where id = #{id}
+    </select>
+
+    <select id="countStudent" resultType="java.lang.Long">
+        select count(*) from student
+    </select>
+
+    <select id="selectMap" resultType="java.util.Map">
+        select id, name, email, age from student where id = #{id}
+    </select>
+
+
+</mapper>
