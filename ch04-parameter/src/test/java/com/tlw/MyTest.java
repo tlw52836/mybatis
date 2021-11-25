@@ -82,6 +82,7 @@ public class MyTest {
         map.put("myName", "李四");
         map.put("myAge", 22);
 
+
         List<Student> stus = studentDao.selectByMap(map);
 
         for (Student s:stus) {
