@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tlw.dao.StudentDao">
+    <select id="selectIf" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student
+        where 1 = 1
+        <if test="name != null and name != ''">
+            and name  like #{name}
+        </if>
+
+        <if test="age > 0">
+            and age > #{age}
+        </if>
+    </select>
+
+    <select id="selectWhere" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student
+        <!--where标签会删除紧跟着的第一个and、 or-->
+        <where>
+            <if test="name != null and name != ''">
+                and name  like #{name}
+            </if>
+
+            <if test="age != null and age > 0">
+                and age > #{age}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectForeachOne" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student
+        <if test="list != null and list.size > 0">
+            where id in
+            <foreach collection="myList" open="(" close=")" separator="," item="myId">
+                #{myId}
+            </foreach>
+        </if>
+    </select>
+</mapper>
