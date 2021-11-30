@@ -38,4 +38,8 @@
             </foreach>
         </if>
     </select>
+
+    <select id="selectAllStudents" resultType="com.tlw.domain.Student">
+        select id, name, email, age from student
+    </select>
 </mapper>

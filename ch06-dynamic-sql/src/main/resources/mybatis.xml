@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--引入properties文件-->
+    <properties resource="jdbc.properties"/>
+
     <!--设置日志-->
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
@@ -14,11 +17,25 @@
 
         <!--第二种方式：用类名作为别名（不区分大小写）-->
         <package name="com.tlw.domain"/>
-
     </typeAliases>
 
+    <!--声明插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    
     <environments default="development">
         <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="development2">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
@@ -30,6 +47,10 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/tlw/dao/StudentDao.xml"/>
+<!--        &lt;!&ndash;第一种方式&ndash;&gt;-->
+<!--        <mapper resource="com/tlw/dao/StudentDao.xml"/>-->
+
+        <!--第二种方式-->
+        <package name="com.tlw.dao"/>
     </mappers>
 </configuration>

@@ -29,4 +29,11 @@ public interface StudentDao {
     * @return
     */
    List<Student> selectForeachOne(@Param("myList") List<Integer> list);
+
+   /**
+    * 测试pagehelper的分页功能
+    * @return
+    */
+   List<Student> selectAllStudents();
+
 }
